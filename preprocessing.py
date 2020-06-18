@@ -24,7 +24,7 @@ class MaxlenTranslationDataset(data.Dataset):
         src_path, trg_path = tuple(os.path.expanduser(path + x) for x in exts)
 
         examples = []
-        with open(src_path) as src_file, open(trg_path) as trg_file:
+        with open(src_path, encoding='utf-8') as src_file, open(trg_path, encoding='utf-8') as trg_file:
             for src_line, trg_line in tqdm(zip(src_file, trg_file)):
                 src_line, feat_line = feature_tokenize(src_line)
                 trg_line = trg_line.split(' ')
@@ -86,7 +86,9 @@ class DataPreprocessor(object):
         val_dataset = data.Dataset(fields=fields, examples=val_examples)
 
         # Loading GloVE vectors
-        vec = vocab.Vectors(os.path.join(glove_dir, "glove.6B.{}d.txt".format(config.word_embedding_size)))
+        #vec = vocab.Vectors(os.path.join(glove_dir, "glove.6B.{}d.txt".format(config.word_embedding_size)))
+        vec = vocab.Vectors(os.path.join(glove_dir, "glove-sbwc.i25.vec"))
+
 
         # Building field vocabulary
         self.src_field.build_vocab(train_dataset, vectors=vec, max_size=config.in_vocab_size)

@@ -3,12 +3,12 @@ import numpy as np
 import math
 import torch
 import torch.nn.functional as F
-from spacy.lang.en import English
+from spacy.lang.es import Spanish
 
 # internal utilities
 import config
 
-tokenizer = English()
+tokenizer = Spanish()
 tokenizer.add_pipe(tokenizer.create_pipe("sentencizer"))
 device = torch.device("cuda" if config.cuda else "cpu")
 

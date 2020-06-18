@@ -1,17 +1,36 @@
 # experiment ID
 exp = "qg-1"
 
+environment = 'colab'
 # data directories
-newsqa_data_dir = "/Users/gdamien/Data/newsqa/newsqa-data-v1"
-squad_data_dir = "/Users/gdamien/Data/squad/"
-out_dir = "/Users/gdamien/Data/qg/"
+#newsqa_data_dir = "/Users/gdamien/Data/newsqa/newsqa-data-v1"
+if (environment=='colab'):
+
+    squad_data_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/json/"
+    squad_data_small_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/json/small"
+    out_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/qg/"
+    # model paths
+    spacy_es ="C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/spacy/es_core_news_md/en_core_news_md-2.3.0"
+    glove = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/glove/"
+    squad_models = "C:/Users/jrml/Documents/Chatbot/Bankia.es/json/models/"
+
+elif (environment=='colab'):
+
+    squad_data_dir = "/content/drive/My Drive/Colab Notebooks/QG/data/json/squad_es"
+    squad_data_small_dir = "/content/drive/My Drive/Colab Notebooks/QG/data/json/squad_es_small" 
+    out_dir = "/content/drive/My Drive/Colab Notebooks/QG/data/qg/" 
+    # model paths
+    spacy_es = "/content/drive/My Drive/Colab Notebooks/QG/data/spacy/es_core_news_md/en_core_news_md-2.3.0"  
+    glove = "/content/drive/My Drive/Colab Notebooks/QG/data/glove/" 
+    squad_models = "/content/drive/My Drive/Colab Notebooks/QG/data/models/"
+
 train_dir = squad_data_dir + "train/"
 dev_dir = squad_data_dir + "dev/"
 
 # model paths
-spacy_en = "/Users/gdamien/Data/spacy/en_core_web_sm-2.0.0/en_core_web_sm/en_core_web_sm-2.0.0"
-glove = "/Users/gdamien/Data/glove.6B/"
-squad_models = "/Users/gdamien/Data/squad/models/"
+# spacy_es = "/content/drive/My Drive/Colab Notebooks/QG/data/spacy/es_core_news_md/en_core_news_md-2.3.0"  #"C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/spacy/es_core_news_md/en_core_news_md-2.3.0"
+# glove = "/content/drive/My Drive/Colab Notebooks/QG/data/glove/" #"C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/glove/"
+# squad_models = "/content/drive/My Drive/Colab Notebooks/QG/data/models/" # "C:/Users/jrml/Documents/Chatbot/Bankia.es/json/models/"
 
 # preprocessing values
 paragraph = False

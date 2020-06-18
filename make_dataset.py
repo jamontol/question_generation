@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # external libraries
 import os
 import tqdm
@@ -11,8 +13,7 @@ import config
 from utils import tokenizer, clean_text, word_tokenize, sent_tokenize, convert_idx
 
 # URL to download SQuAD dataset 2.0
-squad_url = "https://rajpurkar.github.io/SQuAD-explorer/dataset"
-
+squad_url = "https://github.com/ccasimiro88/TranslateAlignRetrieve/blob/master/SQuAD-es-v2.0/"
 
 def maybe_download_squad(url, filename, out_dir):
     # path for local file.
@@ -253,22 +254,22 @@ def concatenate_data(squad_data_dir, newsqa_data_dir, out_dir, env="train", full
     out_question_filename = os.path.join(out_dir, env + ".question")
 
     for infiles, outfile in zip([sentence_files, question_files], [out_sentence_filename, out_question_filename]):
-        with open(outfile, "w") as o:
+        with open(outfile, "w", encoding='utf-8') as o:
             for f in infiles:
-                with open(f) as infile:
+                with open(f, encoding='utf-8') as infile:
                     for line in infile:
                         o.write(line)
 
-    with open(out_sentence_filename, "r") as f,\
-         open(out_question_filename, "r") as g:
+    with open(out_sentence_filename, "r", encoding='utf-8') as f,\
+         open(out_question_filename, "r", encoding='utf-8') as g:
         sentence_lines = f.readlines()
         question_lines = g.readlines()
 
     sentence_lines, question_lines = zip(
         *[(s, q) for s, q in sorted(zip(sentence_lines, question_lines), key=lambda x: len(word_tokenize(x[0])))])
 
-    with open(out_sentence_filename, "w") as f,\
-         open(out_question_filename, "w") as g:
+    with open(out_sentence_filename, "w", encoding='utf-8') as f,\
+         open(out_question_filename, "w", encoding='utf-8') as g:
         for line in sentence_lines:
             f.write(line)
         for line in question_lines:
@@ -276,18 +277,23 @@ def concatenate_data(squad_data_dir, newsqa_data_dir, out_dir, env="train", full
 
 
 if __name__ == "__main__":
-    squad_train_filename = "train-v2.0.json"
-    squad_dev_filename = "dev-v2.0.json"
+    squad_train_filename = "train-v2.0-es.json"
+    squad_dev_filename = "dev-v2.0-es.json"
+    squad_train_small_filename = "train-v2.0-es-small.json"
+    squad_dev_small_filename = "dev-v2.0-es-small.json"
     newsqa_filename = "combined-newsqa-data-v1.json"
 
-    maybe_download_squad(squad_url, squad_train_filename, config.squad_data_dir)
-    maybe_download_squad(squad_url, squad_dev_filename, config.squad_data_dir)
+    #maybe_download_squad(squad_url, squad_train_filename, config.squad_data_dir)
+    #maybe_download_squad(squad_url, squad_dev_filename, config.squad_data_dir)
 
-    p1 = NewsQAPreprocessor(config.newsqa_data_dir, newsqa_filename, tokenizer)
+    #p1 = NewsQAPreprocessor(config.newsqa_data_dir, newsqa_filename, tokenizer)
+    #p1.preprocess()
+
+    p1 = SquadPreprocessor(config.squad_data_small_dir, squad_train_small_filename, squad_dev_small_filename, tokenizer)
     p1.preprocess()
 
     p2 = SquadPreprocessor(config.squad_data_dir, squad_train_filename, squad_dev_filename, tokenizer)
     p2.preprocess()
 
-    concatenate_data(config.squad_data_dir, config.newsqa_data_dir, config.out_dir, env="train", full_context=config.paragraph)
-    concatenate_data(config.squad_data_dir, config.newsqa_data_dir, config.out_dir, env="dev", full_context=config.paragraph)
+    concatenate_data(config.squad_data_small_dir, config.squad_data_dir, config.out_dir, env="train", full_context=config.paragraph)
+    concatenate_data(config.squad_data_small_dir, config.squad_data_dir, config.out_dir, env="dev", full_context=config.paragraph)
