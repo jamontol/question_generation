@@ -1,6 +1,13 @@
+# Created by https://www.gitignore.io/api/java,maven,eclipse,intellij
+# Edit at https://www.gitignore.io/?templates=java,maven,eclipse,intellij
 
 *.pkl
 *.csv
 *.joblib
 
 output/
+.vector_cache/
+.vscode/
+
+
+# End of https://www.gitignore.io/api/java,maven,eclipse,intellij
