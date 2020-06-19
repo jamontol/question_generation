@@ -1,10 +1,10 @@
 # experiment ID
 exp = "qg-1"
 
-environment = 'colab'
+environment = 'local'
 # data directories
 #newsqa_data_dir = "/Users/gdamien/Data/newsqa/newsqa-data-v1"
-if (environment=='colab'):
+if (environment=='local'):
 
     squad_data_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/json/squad_es"
     mlqa_data_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/json/mlqa_es"
@@ -12,7 +12,7 @@ if (environment=='colab'):
     # model paths
     spacy_es ="C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/spacy/es_core_news_md/en_core_news_md-2.3.0"
     glove = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/glove/"
-    squad_models = "C:/Users/jrml/Documents/Chatbot/Bankia.es/json/models/"
+    squad_models = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/models/"
 
 elif (environment=='colab'):
 
@@ -22,7 +22,7 @@ elif (environment=='colab'):
     # model paths
     spacy_es = "/content/drive/My Drive/Colab Notebooks/QG/data/spacy/es_core_news_md/en_core_news_md-2.3.0"  
     glove = "/content/drive/My Drive/Colab Notebooks/QG/data/glove/" 
-    squad_models = "/content/drive/My Drive/Colab Notebooks/QG/data/models/"
+    squad_models = "/content/drive/My Drive/Colab Notebooks/QG/models/"
 
 train_dir = squad_data_dir + "train/"
 dev_dir = squad_data_dir + "dev/"

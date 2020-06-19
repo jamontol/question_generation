@@ -4,6 +4,7 @@
 *.pkl
 *.csv
 *.joblib
+*.vec.pt
 
 output/
 .vector_cache/
