@@ -6,8 +6,8 @@ environment = 'colab'
 #newsqa_data_dir = "/Users/gdamien/Data/newsqa/newsqa-data-v1"
 if (environment=='colab'):
 
-    squad_data_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/json/"
-    squad_data_small_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/json/small"
+    squad_data_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/json/squad_es"
+    mlqa_data_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/json/mlqa_es"
     out_dir = "C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/qg/"
     # model paths
     spacy_es ="C:/Users/jrml/Documents/Chatbot/Bankia.es/datos/spacy/es_core_news_md/en_core_news_md-2.3.0"
@@ -17,7 +17,7 @@ if (environment=='colab'):
 elif (environment=='colab'):
 
     squad_data_dir = "/content/drive/My Drive/Colab Notebooks/QG/data/json/squad_es"
-    squad_data_small_dir = "/content/drive/My Drive/Colab Notebooks/QG/data/json/squad_es_small" 
+    mlqa_data_dir = "/content/drive/My Drive/Colab Notebooks/QG/data/json/mlqa_es" 
     out_dir = "/content/drive/My Drive/Colab Notebooks/QG/data/qg/" 
     # model paths
     spacy_es = "/content/drive/My Drive/Colab Notebooks/QG/data/spacy/es_core_news_md/en_core_news_md-2.3.0"  
@@ -45,7 +45,7 @@ out_vocab_size = 28000
 
 # training hyper-parameters
 num_epochs = 15
-batch_size = 64
+batch_size = 32
 learning_rate = 1.0
 hidden_size = 600
 n_layers = 2

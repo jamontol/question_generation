@@ -279,9 +279,9 @@ def concatenate_data(squad_data_dir, newsqa_data_dir, out_dir, env="train", full
 if __name__ == "__main__":
     squad_train_filename = "train-v2.0-es.json"
     squad_dev_filename = "dev-v2.0-es.json"
-    squad_train_small_filename = "train-v2.0-es-small.json"
-    squad_dev_small_filename = "dev-v2.0-es-small.json"
-    newsqa_filename = "combined-newsqa-data-v1.json"
+    mlqa_train_filename = "train-v1.0-es.json"
+    mlqa_dev_filename = "dev-v1.0-es.json"
+    #newsqa_filename = "combined-newsqa-data-v1.json"
 
     #maybe_download_squad(squad_url, squad_train_filename, config.squad_data_dir)
     #maybe_download_squad(squad_url, squad_dev_filename, config.squad_data_dir)
@@ -289,11 +289,11 @@ if __name__ == "__main__":
     #p1 = NewsQAPreprocessor(config.newsqa_data_dir, newsqa_filename, tokenizer)
     #p1.preprocess()
 
-    p1 = SquadPreprocessor(config.squad_data_small_dir, squad_train_small_filename, squad_dev_small_filename, tokenizer)
+    p1 = SquadPreprocessor(config.mlqa_data_dir, mlqa_train_filename, mlqa_dev_filename, tokenizer)
     p1.preprocess()
 
     p2 = SquadPreprocessor(config.squad_data_dir, squad_train_filename, squad_dev_filename, tokenizer)
     p2.preprocess()
 
-    concatenate_data(config.squad_data_small_dir, config.squad_data_dir, config.out_dir, env="train", full_context=config.paragraph)
-    concatenate_data(config.squad_data_small_dir, config.squad_data_dir, config.out_dir, env="dev", full_context=config.paragraph)
+    concatenate_data(config.mlqa_data_dir, config.squad_data_dir, config.out_dir, env="train", full_context=config.paragraph)
+    concatenate_data(config.mlqa_data_dir, config.squad_data_dir, config.out_dir, env="dev", full_context=config.paragraph)
