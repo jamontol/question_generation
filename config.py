@@ -1,5 +1,5 @@
 # experiment ID
-exp = "qg-1"
+exp = "qg-2"
 
 environment = 'local'
 # data directories
@@ -44,7 +44,7 @@ in_vocab_size = 45000
 out_vocab_size = 28000
 
 # training hyper-parameters
-num_epochs = 15
+num_epochs = 30 #15
 batch_size = 32
 learning_rate = 1.0
 hidden_size = 600

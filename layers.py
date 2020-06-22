@@ -110,7 +110,7 @@ class Decoder(nn.Module):
 
             out, probs = sample_sequence(out, self.top_k, self.top_p, self.temperature, False)
             if t < self.min_len_sentence and out.item() in self.special_tokens_ids:
-                while out.item() in self.special_tokens_ids:
+                while ((out.item() in self.special_tokens_ids) and (len(torch.nonzero(probs)) != 1)):
                     out = torch.multinomial(probs, num_samples=1)
 
             if out.item() in self.special_tokens_ids:
