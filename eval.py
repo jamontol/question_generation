@@ -38,7 +38,8 @@ def main():
     # Train on GPU if CUDA variable is set to True (a GPU with CUDA is needed to do so)
     device = torch.device("cuda" if hyper_params["cuda"] else "cpu")
     torch.manual_seed(42)
-    experiment_path = "output/{}".format(config.exp)
+    #experiment_path = "output/{}".format(config.exp)
+    experiment_path = '/'.join([config.output,config.exp])
 
     # Preprocess the data
     dp = DataPreprocessor()
