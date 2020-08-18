@@ -1,7 +1,7 @@
 # experiment ID
 exp = "qg-1"
 
-environment = 'local'
+environment = 'colab'
 # data directories
 #newsqa_data_dir = "/Users/gdamien/Data/newsqa/newsqa-data-v1"
 if (environment=='local'):
